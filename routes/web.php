@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::group(['middleware' => 'cors'], function(Router $router){
-//     $router->get('api', 'ApiController@index');
+// Route::get('/', function () {
+//     return view('welcome');
 // });
+
+Route::group(['middleware' => 'cors'], function(){
+	// Lista productos
+    Route::get('getProductos','productosController@get_productos');
+    Route::get('getProductosById','productosController@get_productos_by_id');
+    // Ingreso App
+    Route::post('login','loginController@login');
+
+    Route::post('getProvincias','cmbController@get_provincias');
+    Route::post('getCiudades','cmbController@get_ciudades');
+
+    Route::post('getDatosDeposito','pagoController@get_datos_deposito');
+    
+});
