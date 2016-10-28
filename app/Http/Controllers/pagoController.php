@@ -16,7 +16,7 @@ class pagoController extends Controller
 {
     public function __construct(){
     	$this->empresa=new Empresas();
-    	    	$this->pedidos=new Pedidos();
+    	$this->pedidos=new Pedidos();
     }
 
     public function get_datos_deposito(Request $request){
