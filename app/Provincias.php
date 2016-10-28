@@ -8,6 +8,7 @@ class Provincias extends Model
 {
      protected $connection='mysql';
     protected $table='provincia';
+    public $timestamps=false;
     protected $fillable = [
 'nombre_provincia'
     ];

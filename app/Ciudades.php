@@ -8,6 +8,7 @@ class Ciudades extends Model
 {
      protected $connection='mysql';
     protected $table='ciudad';
+    public $timestamps=false;
     protected $fillable = [
 						'nombre_ciudad','nombre_provincia'
 						    ];

@@ -8,6 +8,7 @@ class Clientes extends Model
 {
     protected $connection='mysql';
     protected $table='clientes';
+    public $timestamps=false;
     protected $fillable = [
 'nombres',
 'apellidos',

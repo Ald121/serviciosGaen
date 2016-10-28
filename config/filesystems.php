@@ -48,6 +48,11 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'custom' => [
+            'driver' => 'local',
+            'root'   => '/xampp/htdocs/app_gaen/admin/img',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

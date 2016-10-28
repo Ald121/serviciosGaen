@@ -8,6 +8,7 @@ class Empresas extends Model
 {
     protected $connection='mysql';
     protected $table='empresa';
+    public $timestamps=false;
     protected $fillable = [
 'idempresa',
 'nombre',

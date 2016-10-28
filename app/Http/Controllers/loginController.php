@@ -43,6 +43,7 @@ class loginController extends Controller
         $datos['fecha_nacimiento']=$fecha[1].'-'.$fecha[2].'-'.$fecha[0];
         $prov = $this->ciudades->select('nombre_provincia')->where('nombre_ciudad',$datos['nombre_ciudad'])->first();
         $datos['nombre_provincia']=$prov['nombre_provincia'];
+        $datos['nombre_empresa']='Servientrega';
 
         return response()->json(["respuesta"=>$datos,"token"=>$token]);
 
