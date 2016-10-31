@@ -28,7 +28,7 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('getDatosDeposito','pagoController@get_datos_deposito');
     Route::post('confirmarPedido','pedidosController@confirmar_pedido');
 
-Route::group(['middleware' => ['jwt.auth']], function ()
+    Route::group(['middleware' => ['jwt.auth']], function ()
         {
     Route::get('misPedidos','pedidosController@mis_pedidos');
     Route::post('uploadDeposito','pagoController@upload_deposito');

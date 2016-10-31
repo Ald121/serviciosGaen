@@ -25,12 +25,12 @@ class pedidosController extends Controller
     	$this->pedidos=new Pedidos();
     	$this->productos=new productos();
         // Autenticacion
-         $this->user = JWTAuth::parseToken()->authenticate();
+        $this->user = JWTAuth::parseToken()->authenticate();
     }
 
     public function confirmar_pedido(Request $request){
 
-        $this->pedidos->idcliente=$request->input('usuario')['idcliente'];
+        $this->pedidos->idcliente=$this->user['idsocio'];
         $this->pedidos->total_productos=count($request->input('productos'));
         $this->pedidos->total=$request->input('total');
         $this->pedidos->fecha=Carbon::now()->toDateString();

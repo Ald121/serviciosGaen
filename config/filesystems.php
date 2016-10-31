@@ -50,7 +50,7 @@ return [
 
         'custom' => [
             'driver' => 'local',
-            'root'   => '/xampp/htdocs/app_gaen/admin/img',
+            'root'   => '/home/alexg/public_html/admin/img',
         ],
 
         'public' => [

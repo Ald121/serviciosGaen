@@ -33,6 +33,6 @@ class pagoController extends Controller
         
         Storage::disk('custom')->put('comprobante_pedido_'.$id_img.'.'.$extension,  File::get($file));
 
-		return response()->json(["repuesta"=>$request->all()]);
+		return response()->json(["repuesta"=>true]);
     }
 }
