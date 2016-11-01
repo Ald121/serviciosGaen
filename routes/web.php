@@ -21,6 +21,8 @@ Route::group(['middleware' => 'cors'], function(){
     Route::get('getProductosById','productosController@get_productos_by_id');
     // Ingreso App
     Route::post('login','loginController@login');
+    // Registro
+    Route::post('Registrar','loginController@registro');
 
     Route::post('getProvincias','cmbController@get_provincias');
     Route::post('getCiudades','cmbController@get_ciudades');

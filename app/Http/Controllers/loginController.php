@@ -13,6 +13,9 @@ use App\Ciudades;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Auth;
+// Extras
+use DB;
+use Carbon\Carbon;
 
 class loginController extends Controller
 {
@@ -47,5 +50,28 @@ class loginController extends Controller
 
         return response()->json(["respuesta"=>$datos,"token"=>$token]);
 
+    }
+
+    public function registro(Request $request){
+
+$date=explode('T',  $request->input('fecha_nacimiento'));
+
+DB::table('clientes')->insert(
+    [
+'idcliente'=>$request->input('idcliente'),
+'nombres'=>$request->input('nombres'),
+'apellidos'=>$request->input('apellidos'),
+'direccion'=>$request->input('direccion'),
+'telefono'=>$request->input('telefono'),
+'email'=>$request->input('email'),
+'sexo'=>$request->input('choice'),
+'estado'=>'0',
+'foto'=>'foto',
+'nombre_ciudad'=>$request->input('nombre_ciudad'),
+'codigo_postal'=>'0000',
+'fecha_nacimiento'=>$date[0]]
+);
+
+      return response()->json(["respuesta"=>true]);  
     }
 }
