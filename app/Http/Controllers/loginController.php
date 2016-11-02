@@ -16,6 +16,7 @@ use Auth;
 // Extras
 use DB;
 use Carbon\Carbon;
+use Mail;
 
 class loginController extends Controller
 {
@@ -72,6 +73,33 @@ DB::table('clientes')->insert(
 'fecha_nacimiento'=>$date[0]]
 );
 
+DB::table('usuarios')->insert(
+    [
+        'nombres'=>$request->input('nombres'),
+        'apellidos'=>$request->input('apellidos'),
+        'usuario'=>$request->input('email'),
+        'pass'=>md5($request->input('pass')),
+        'estado'=>'0',
+        'cedula'=>$request->input('idcliente'),
+        'tipo_usuario'=>'CLIENTE',
+        'idsocio'=>$request->input('idcliente'),
+        'pass_app'=>bcrypt($request->input('pass'))
+]);
+
+    $data = ["cedula"=>$request->input('idcliente'),"correo"=>$request->input('email')];
+    $this->enviar_email($data);
       return response()->json(["respuesta"=>true]);  
     }
+
+public function enviar_email($data){
+
+        $correo_enviar=$data['correo'];
+        
+        Mail::send('email_registro', $data, function($message)use ($correo_enviar)
+            {
+                $message->from("info@gaen.skn1.com",'GAEN');
+                $message->to($correo_enviar)->subject('Verifica tu cuenta');
+            });
+}
+
 }
