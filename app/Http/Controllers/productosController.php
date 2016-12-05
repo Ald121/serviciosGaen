@@ -42,7 +42,7 @@ class productosController extends Controller
 															socio_telefono,
 															socio_email from socios where socio_email='".$value->id_socio."'");
    
-    		$value->img='http://gaen.skn1.com/admin/archivos/'.$cate_prod[0]->direccion.'/'.$img_prod[0]->direccion_foto;
+    		$value->img='http://www.asociacion-gaen.com/admin/archivos/'.$cate_prod[0]->direccion.'/'.$img_prod[0]->direccion_foto;
     		$value->detalles=$detalles_prod;
     		$value->socio=$socio;
     	}
@@ -78,7 +78,7 @@ class productosController extends Controller
 															socio_telefono,
 															socio_email from socios where socio_email='".$value->id_socio."'");
    
-    		$value->img='http://gaen.skn1.com/admin/archivos/'.$cate_prod[0]->direccion.'/'.$img_prod[0]->direccion_foto;
+    		$value->img='http://www.asociacion-gaen.com/admin/archivos/'.$cate_prod[0]->direccion.'/'.$img_prod[0]->direccion_foto;
     		$value->detalles=$detalles_prod;
     		$value->socio=$socio;
     	}

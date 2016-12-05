@@ -4,10 +4,10 @@
 
 	"default": {
 
-		"host": "ftp.gaen.skn1.com",
-		"username": "alexg",  // or null for anonymous login
-		"password": "root@123",
-		"path": "/public_html/serviciosGaen",
+		"host": "ftp.asociacion-gaen.com",
+		"username": "asociaciongaen",  // or null for anonymous login
+		"password": "Trq_sg^z10XA",
+		"path": "/public_html/api",
 
 		"upload_on_save": true, // set *false* if you do not want to upload on save!
 
