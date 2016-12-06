@@ -50,7 +50,7 @@ return [
 
         'custom' => [
             'driver' => 'local',
-            'root'   => '/home/alexg/public_html/admin/img',
+            'root'   => '/home/asociaciongaen/public_html/admin/img',
         ],
 
         'public' => [

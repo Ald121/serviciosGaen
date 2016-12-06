@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\User;
 use App\Clientes;
 use App\Ciudades;
+use App\Provincias;
 //-------------------------------------- Autenticacion ---------------
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -25,6 +26,7 @@ class loginController extends Controller
     	$this->usuario=new User();
         $this->clientes=new Clientes();
         $this->ciudades=new Ciudades();
+        $this->provincias=new Provincias();
     }
     public function login(Request $request){
 
@@ -45,8 +47,9 @@ class loginController extends Controller
         $datos=$this->clientes->where('idcliente',$datos['cedula'])->first();
         $fecha=explode('-', $datos['fecha_nacimiento']);
         $datos['fecha_nacimiento']=$fecha[1].'-'.$fecha[2].'-'.$fecha[0];
-        $prov = $this->ciudades->select('nombre_provincia')->where('nombre_ciudad',$datos['nombre_ciudad'])->first();
-        $datos['nombre_provincia']=$prov['nombre_provincia'];
+        $prov = $this->ciudades->select('idprovincia')->where('idciudad',$datos['nombre_ciudad'])->first();
+        $prov = $this->provincias->select('nombre_provincias')->where('idprovincias',$prov['idprovincia'])->first();
+        $datos['nombre_provincia']=$prov['nombre_provincias'];
         $datos['nombre_empresa']='Servientrega';
 
         return response()->json(["respuesta"=>$datos,"token"=>$token]);

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Provincias extends Model
 {
      protected $connection='mysql';
-    protected $table='provincia';
+    protected $table='provincias';
     public $timestamps=false;
     protected $fillable = [
-'nombre_provincia'
+'nombre_provincias'
     ];
 }
