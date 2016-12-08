@@ -29,6 +29,8 @@ Route::group(['middleware' => 'cors'], function(){
 
     Route::post('getDatosDeposito','pagoController@get_datos_deposito');
     Route::post('confirmarPedido','pedidosController@confirmar_pedido');
+    Route::post('getCostoEnvio','pagoController@get_costo_envio');
+    Route::post('getEmpresasEnvio','cmbController@get_empresas_envio');
 
     Route::group(['middleware' => ['jwt.auth']], function ()
         {

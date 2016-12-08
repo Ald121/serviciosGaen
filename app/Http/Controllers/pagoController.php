@@ -11,6 +11,7 @@ use App\Pedidos;
 // Extras
 use Storage;
 use File;
+use DB;
 
 class pagoController extends Controller
 {
@@ -22,6 +23,12 @@ class pagoController extends Controller
     public function get_datos_deposito(Request $request){
 		$datos=$this->empresa->orderBy('idempresa','ASC')->first();
 		return response()->json(["repuesta"=>$datos]);
+    }
+
+    public function get_costo_envio(Request $request){
+        // return response()->json(["repuesta"=>$request->all()]);
+        $datos=DB::table('precios')->where('idciudad',$request->nombre_ciudad)->where('idempresas',$request->idempresas)->first();
+        return response()->json(["repuesta"=>$datos]);
     }
 
     public function upload_deposito(Request $request){

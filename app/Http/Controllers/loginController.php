@@ -48,9 +48,11 @@ class loginController extends Controller
         $fecha=explode('-', $datos['fecha_nacimiento']);
         $datos['fecha_nacimiento']=$fecha[1].'-'.$fecha[2].'-'.$fecha[0];
         $prov = $this->ciudades->select('idprovincia')->where('idciudad',$datos['nombre_ciudad'])->first();
-        $prov = $this->provincias->select('nombre_provincias')->where('idprovincias',$prov['idprovincia'])->first();
-        $datos['nombre_provincia']=$prov['nombre_provincias'];
-        $datos['nombre_empresa']='Servientrega';
+        //$prov = $this->provincias->select('nombre_provincias')->where('idprovincias',$prov['idprovincia'])->first();
+        $datos['nombre_provincia']=$prov['idprovincia'];
+        $empresa_envio=DB::table('empresas')->orderBy('nombre_empresa','ASC')->first();
+        $datos['nombre_empresa']=$empresa_envio->idempresas;
+        $datos['costo']='0';
 
         return response()->json(["respuesta"=>$datos,"token"=>$token]);
 
