@@ -31,6 +31,8 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('confirmarPedido','pedidosController@confirmar_pedido');
     Route::post('getCostoEnvio','pagoController@get_costo_envio');
     Route::post('getEmpresasEnvio','cmbController@get_empresas_envio');
+    Route::post('getParametros','parametrosController@get_parametros');
+    Route::get('DownloadApp', 'DownloadController@download_app');
 
     Route::group(['middleware' => ['jwt.auth']], function ()
         {

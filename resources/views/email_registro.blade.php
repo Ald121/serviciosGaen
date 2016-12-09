@@ -151,7 +151,7 @@
                                                                     <tr>
                                                                         <td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #634d4d; margin: 0px; font-size: 18px; padding-bottom: 10px; padding-top: 15px;" valign="top" align="left">Bienvenido a la asociación GAEN <br>
                                                                         <div style="text-align: center;">
-                                                                        <img src="http://www.gaen.skn1.com/images/logo2.png" style="width: 72%;">
+                                                                        <img src="http://www.asociacion-gaen.com/images/logo2.png" style="width: 72%;">
                                                                         </div>
                                                                         </td>
                                                                     </tr>

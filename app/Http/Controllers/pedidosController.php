@@ -10,8 +10,11 @@ use App\Clientes;
 use App\Pedidos;
 use App\Detalles_Pedidos;
 use App\productos;
+use App\Empresas;
 // Extras
 use Carbon\Carbon;
+use Mail;
+use DB;
 //-------------------------------------- Autenticacion ---------------
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -22,6 +25,7 @@ class pedidosController extends Controller
     public function __construct(){
     	// Modelos
     	$this->clientes=new Clientes();
+        $this->empresa=new Empresas();
     	$this->pedidos=new Pedidos();
     	$this->productos=new productos();
         // Autenticacion
@@ -53,8 +57,11 @@ class pedidosController extends Controller
             $detalles_pedidos->save();
             }
         }
+        $datos_pago=$this->empresa->orderBy('idempresa','ASC')->first();
 
-		return response()->json(["respuesta"=>true]);
+       $data=['correo'=>$request->usuario['email'],'total'=>$request->total,'banco'=>$datos_pago->banco,'tipo_cuenta'=>$datos_pago->Tipo_cuenta,'numero_cuenta'=>$datos_pago->cuenta_banco,'nombre_cuenta'=>$datos_pago->propietario];
+       $this->enviar_email($data);
+		return response()->json(["respuesta"=>$datos_pago]);
     }
 
     public function mis_pedidos(Request $request){
@@ -62,6 +69,17 @@ class pedidosController extends Controller
         $pedidos=$this->pedidos->where('idcliente',$this->user['cedula'])->get();
     
     return response()->json(["respuesta"=>$pedidos]);
+    }
+
+    public function enviar_email($data){
+
+        $correo_enviar=$data['correo'];
+        
+        Mail::send('email_pago', $data, function($message)use ($correo_enviar)
+            {
+                $message->from("admin@asociacion-gaen.com",'GAEN');
+                $message->to($correo_enviar)->subject('Datos para Deposito');
+            });
     }   
 
 }

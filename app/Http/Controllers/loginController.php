@@ -102,7 +102,7 @@ public function enviar_email($data){
         
         Mail::send('email_registro', $data, function($message)use ($correo_enviar)
             {
-                $message->from("info@gaen.skn1.com",'GAEN');
+                $message->from("admin@asociacion-gaen.com",'GAEN');
                 $message->to($correo_enviar)->subject('Verifica tu cuenta');
             });
 }
