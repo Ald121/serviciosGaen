@@ -33,4 +33,9 @@ class cmbController extends Controller
         $empresas=DB::table('empresas')->get();
         return response()->json(["respuesta"=>$empresas]);
     }
+
+    public function get_Bancos(Request $request){
+        $bancos=DB::table('banco')->get();
+        return response()->json(["respuesta"=>$bancos]);
+    }
 }

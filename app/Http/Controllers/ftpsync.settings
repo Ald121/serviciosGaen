@@ -4,12 +4,12 @@
 
 	"default": {
 
-		"host": "ftp.asociacion-gaen.com",
-		"username": "asociaciongaen",  // or null for anonymous login
-		"password": "Trq_sg^z10XA",
-		"path": "/public_html/api",
+		"host": "ftp.example.com",
+		"username": "your_login",  // or null for anonymous login
+		"password": "your_password",
+		"path": "/",
 
-		"upload_on_save": false, // set *false* if you do not want to upload on save!
+		"upload_on_save": true, // set *false* if you do not want to upload on save!
 
 		// "port": 21,
 		// "tls": false,
